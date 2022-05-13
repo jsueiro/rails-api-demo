@@ -30,7 +30,7 @@ class Api::V1::ProductsController < ApplicationController
   # otherwise renders err obj
   def show
     product = Product.find_by(id: params[:id])
-    if product:
+    if product
       render json: product, status: 200
     else
       render json: {error: "Product not found."}
@@ -47,4 +47,5 @@ class Api::V1::ProductsController < ApplicationController
       :price,
       :description
     ])
+  end
 end
