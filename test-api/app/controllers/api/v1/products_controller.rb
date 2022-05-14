@@ -37,6 +37,13 @@ class Api::V1::ProductsController < ApplicationController
     end
   end
 
+  # as the name implies, it removes an item
+  def destroy
+    product = Product.find_by(id: params[:id])
+    product.destroy
+    render json: {status: 'SUCCESS', message: 'Deleted product', data: product}, status: 200
+  end
+
   # private method only available to this controller.
   # uses the built-in methods .require and .permit provided by ActionController for added security
   private
@@ -48,4 +55,9 @@ class Api::V1::ProductsController < ApplicationController
       :description
     ])
   end
+
+  
+
+
+
 end
